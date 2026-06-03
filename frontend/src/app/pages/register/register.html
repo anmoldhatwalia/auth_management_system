@@ -1,57 +1,146 @@
 <div class="auth-container">
+
   <div class="auth-card">
+
+    <div class="logo-box">
+      UMS
+    </div>
 
     <h2>Create Account</h2>
 
-    <div class="form-group">
-      <label>Name</label>
-      <input
-        type="text"
-        placeholder="Enter name"
-        [(ngModel)]="name">
-    </div>
+    <p class="subtitle">
+      Create your account and get started
+    </p>
 
-    <div class="form-group">
-      <label>Email</label>
-      <input
-        type="email"
-        (blur)="emailTouch=true"
-        placeholder="Enter email"
-        [(ngModel)]="email">
-            @if(emailTouch && !email){
-    <p class="valid">Email is required</p>
-    }
+ <div class="form-group">
 
-    </div>
+  <label>Name</label>
 
-    <div class="form-group">
-      <label>Password</label>
-      <input
-        type="password"
-        placeholder="Enter password"
-        [(ngModel)]="password">
-           @if(password && password.length < 6){ <p class="valid">Password must be at least 6 characters</p>}
+  <div class="input-wrapper">
 
+    <mat-icon>person</mat-icon>
 
-    </div>
+    <input
+      type="text"
+      [(ngModel)]="name"
+      (blur)="nameTouch = true"
+      placeholder="Enter your name">
 
-    <div class="form-group">
-      <label>Confirm Password</label>
-      <input
-        type="password"
-        placeholder="Enter password"
-        [(ngModel)]="confirmPassword">
-          @if(confirmPassword &&password !== confirmPassword){<p class="valid" >Password is not Match</p>}
-    </div>
+  </div>
 
-    <button class="btn" (click)="register()">
-      Register
+  @if(nameTouch && !name){
+    <p class="valid">
+      Name is required
+    </p>
+  }
+
+</div>
+
+<div class="form-group">
+
+  <label>Email</label>
+
+  <div class="input-wrapper">
+
+    <mat-icon>mail</mat-icon>
+
+    <input
+      type="email"
+      [(ngModel)]="email"
+      (blur)="emailTouch = true"
+      placeholder="Enter your email">
+
+  </div>
+
+  @if(emailTouch && !email){
+    <p class="valid">
+      Email is required
+    </p>
+  }
+
+</div>
+
+<div class="form-group">
+
+  <label>Password</label>
+
+  <div class="input-wrapper">
+
+    <mat-icon>lock</mat-icon>
+
+    <input
+      type="password"
+      [(ngModel)]="password"
+      (blur)="passwordTouch = true"
+      placeholder="Enter password">
+
+  </div>
+
+  @if(passwordTouch && !password){
+    <p class="valid">
+      Password is required
+    </p>
+  }
+
+  @else if(password && password.length < 6){
+    <p class="valid">
+      Password must be at least 6 characters
+    </p>
+  }
+
+</div>
+<div class="form-group">
+
+  <label>Confirm Password</label>
+
+  <div class="input-wrapper">
+
+    <mat-icon>verified_user</mat-icon>
+
+    <input
+      type="password"
+      [(ngModel)]="confirmPassword"
+      (blur)="confirmPasswordTouch = true"
+      placeholder="Confirm password">
+
+  </div>
+
+  @if(confirmPasswordTouch && !confirmPassword){
+    <p class="valid">
+      Confirm password is required
+    </p>
+  }
+
+  @else if(confirmPassword && password !== confirmPassword){
+    <p class="valid">
+      Passwords do not match
+    </p>
+  }
+
+</div>
+
+  
+
+    <button
+      class="btn"
+      (click)="register()">
+      <mat-icon>how_to_reg</mat-icon>
+
+      Create Account
+
     </button>
 
     <p>
+
       Already have an account?
-      <a routerLink="/login">Login</a>
+
+      <a routerLink="/login">
+        Login
+
+      </a>
+
     </p>
 
   </div>
+
 </div>

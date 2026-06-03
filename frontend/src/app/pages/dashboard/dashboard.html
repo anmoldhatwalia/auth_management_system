@@ -1,55 +1,260 @@
 <div class="dashboard">
 
-  <nav class="navbar">
-    <div class="logo">
-      User Management System
+  <!-- Sidebar -->
+
+  <aside class="sidebar">
+
+    <div class="sidebar-header">
+
+      <h2>UMS</h2>
+
     </div>
+
+    <ul class="nav-links">
+
+      <li routerLink="/dashboard" routerLinkActive="active">
+
+        <mat-icon>dashboard</mat-icon>
+
+        <span>Dashboard</span>
+
+      </li>
+
+      <li routerLink="/users" routerLinkActive="active">
+
+        <mat-icon>group</mat-icon>
+
+        <span>Users</span>
+
+      </li>
+
+      <li routerLink="/analytics" routerLinkActive="active">
+
+        <mat-icon>analytics</mat-icon>
+
+        <span>Analytics</span>
+
+      </li>
+
+      <li routerLink="/settings" routerLinkActive="active">
+
+        <mat-icon>settings</mat-icon>
+
+        <span>Settings</span>
+
+      </li>
+
+    </ul>
 
     <button class="logout-btn" (click)="logout()">
+
+      <mat-icon>logout</mat-icon>
+
       Logout
+
     </button>
-  </nav>
 
-  <div class="content">
+  </aside>
 
-    <h2>User Dashboard</h2>
+  <!-- Main Content -->
 
-    <div class="search-box">
-      <input type="text" placeholder="Search user..." (keyup)="applyFilter($event)">
+  <main class="main-content">
+
+    <!-- Topbar -->
+    <div class="header">
+
+      <div class="header-left">
+
+        <div>
+          <h1>Dashboard</h1>
+          <p class="welcome-text">
+            Welcome back, Anmol 👋
+          </p>
+        </div>
+
+      </div>
+
+      <div class="header-right">
+
+        <!-- Search -->
+
+        <div class="search-box">
+
+          <mat-icon>search</mat-icon>
+
+          <input type="text" placeholder="Search users..." (keyup)="applyFilter($event)">
+
+        </div>
+
+        <!-- Notification -->
+
+        <button class="notification-btn">
+
+          <mat-icon>notifications</mat-icon>
+
+          <span class="badge">
+            3
+          </span>
+
+        </button>
+
+        <!-- Profile -->
+
+        <div class="profile-card" [matMenuTriggerFor]="profileMenu">
+
+          <div class="profile-avatar">
+            A
+          </div>
+
+          <div class="profile-info">
+
+            <span class="profile-name">
+              Anmol Dhatwalia
+            </span>
+
+            <span class="profile-role">
+              Administrator
+            </span>
+
+          </div>
+
+          <mat-icon class="dropdown-icon">
+            expand_more
+          </mat-icon>
+
+        </div>
+
+        <mat-menu #profileMenu="matMenu">
+
+          <button mat-menu-item>
+
+            <mat-icon>person</mat-icon>
+
+            <span>My Profile</span>
+
+          </button>
+
+          <button mat-menu-item>
+
+            <mat-icon>settings</mat-icon>
+
+            <span>Settings</span>
+
+          </button>
+
+          <button mat-menu-item>
+
+            <mat-icon>help</mat-icon>
+
+            <span>Help Center</span>
+
+          </button>
+
+          <button mat-menu-item (click)="logout()">
+
+            <mat-icon>logout</mat-icon>
+
+            <span>Logout</span>
+
+          </button>
+
+        </mat-menu>
+
+      </div>
+
     </div>
 
-    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+    <!-- Cards -->
 
-      <!-- Name -->
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>
-          Name
-        </th>
+    <div class="cards">
 
-        <td mat-cell *matCellDef="let user">
-          {{ user.name }}
-        </td>
-      </ng-container>
+      <div class="card">
 
-      <!-- Email -->
-      <ng-container matColumnDef="email">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>
-          Email
-        </th>
+        <h4>Total Users</h4>
 
-        <td mat-cell *matCellDef="let user">
-          {{ user.email }}
-        </td>
-      </ng-container>
+        <h2>{{ dataSource.data.length }}</h2>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      </div>
 
-      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      <div class="card">
 
-    </table>
+        <h4>Active Users</h4>
 
-    <mat-paginator [pageSize]="5" [pageSizeOptions]="[5,10,20]" showFirstLastButtons>
-    </mat-paginator>
-  </div>
+        <h2>{{ dataSource.data.length }}</h2>
+
+      </div>
+
+      <div class="card">
+
+        <h4>New Users</h4>
+
+        <h2>{{ dataSource.data.length }}</h2>
+
+      </div>
+
+    </div>
+
+    <!-- Table Section -->
+
+    <div class="table-card">
+
+      <div class="table-header">
+
+        <h3>User Management</h3>
+
+      </div>
+
+      <table mat-table [dataSource]="dataSource" matSort>
+
+        <!-- Name -->
+
+        <ng-container matColumnDef="name">
+
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+
+            Name
+
+          </th>
+
+          <td mat-cell *matCellDef="let user">
+
+            {{ user.name }}
+
+          </td>
+
+        </ng-container>
+
+        <!-- Email -->
+
+        <ng-container matColumnDef="email">
+
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+
+            Email
+
+          </th>
+
+          <td mat-cell *matCellDef="let user">
+
+            {{ user.email }}
+
+          </td>
+
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns">
+        </tr>
+
+        <tr mat-row *matRowDef="let row; columns: displayedColumns">
+        </tr>
+
+      </table>
+
+      <mat-paginator [pageSize]="5" [pageSizeOptions]="[5,10,20]" showFirstLastButtons>
+      </mat-paginator>
+
+    </div>
+
+  </main>
 
 </div>

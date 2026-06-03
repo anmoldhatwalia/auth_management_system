@@ -3,11 +3,12 @@ import { Auth } from '../../services/auth';
 import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [RouterLink,FormsModule],
+  imports: [RouterLink,FormsModule,MatIconModule],
   templateUrl: './register.html',
   styleUrl: './register.css',
 })
@@ -17,10 +18,13 @@ export class Register {
   private toastr = inject(ToastrService)
 
   name = '';
+  nameTouch=false;
   email = '';
   emailTouch=false;
   password = '';
+  passwordTouch=false;
   confirmPassword='';
+  confirmPasswordTouch=false;
 
 
   register() {
@@ -57,16 +61,28 @@ export class Register {
       confirmPassword : this.confirmPassword
     }
 
-    return this.auth.register(data).subscribe({
-      next: ()=>{
-        this.toastr.success("Account Created Successfully","Success")
-        this.router.navigate(['./login']);
+    return     this.auth.register(data).subscribe({next:()=>{
+      this.toastr.success('Account Created Successfully','Success')
+      this.router.navigate(['/login'])
+    },
+    error:(err)=>{
+      
+  if (err.status === 400) {
 
-      },
-      error:(err)=>{
-        this.toastr.error('Invaild Input','Error')
-  
-      }
+    this.toastr.warning(
+      err.error.message,
+      'Warning'
+    );
+
+  } else {
+
+    this.toastr.error(
+      'Something went wrong',
+      'Error'
+    );
+
+  }
+    }
     })
 
   }

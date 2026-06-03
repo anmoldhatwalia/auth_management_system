@@ -3,11 +3,12 @@ import { Auth } from '../../services/auth';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink,RouterLinkActive } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, RouterLink],
+  imports: [FormsModule, RouterLink,MatIconModule],
   templateUrl: './login.html',
   styleUrl: './login.css',
 })
@@ -20,6 +21,7 @@ export class Login {
   email = '';
   emailTouch = false;
   password = '';
+  passwordTouch=false;
 
   
 
@@ -56,7 +58,21 @@ export class Login {
           );
 
       },
-       error: () => { this.toastr.error('Invalid Email or Password', 'Error'); }
+       error: (err) => { if (err.status === 400) {
+
+    this.toastr.warning(
+      err.error.message,
+      'Warning'
+    );
+
+  } else {
+
+    this.toastr.error(
+      'Something went wrong',
+      'Error'
+    );
+
+  }}
     })
 
   }

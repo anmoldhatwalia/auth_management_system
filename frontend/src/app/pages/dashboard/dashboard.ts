@@ -1,15 +1,24 @@
-import {Component,OnInit,ViewChild,inject,AfterViewInit} from '@angular/core';
+import { Component, OnInit, ViewChild, inject, AfterViewInit } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 
-import {MatTableDataSource,MatTableModule} from '@angular/material/table';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 
-import {MatPaginator,MatPaginatorModule} from '@angular/material/paginator';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 
-import {MatSort,MatSortModule} from '@angular/material/sort';
+import { MatSort, MatSortModule } from '@angular/material/sort';
 
 import { MatInputModule } from '@angular/material/input';
+
+import { MatIconModule } from '@angular/material/icon';
+
+import { MatMenuModule } from '@angular/material/menu';
+import { MatDividerModule } from '@angular/material/divider';
+
+import { MatButtonModule } from '@angular/material/button';
+
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 import { Auth } from '../../services/auth';
 
@@ -21,7 +30,15 @@ import { Auth } from '../../services/auth';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatInputModule
+    MatInputModule,
+    MatIconModule,
+    MatButtonModule,
+    MatMenuModule,
+    MatDividerModule,
+    RouterLink,
+    RouterLinkActive
+
+
   ],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css'
@@ -30,14 +47,23 @@ export class Dashboard implements OnInit, AfterViewInit {
 
   private auth = inject(Auth);
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
   displayedColumns: string[] = [
     'name',
     'email'
   ];
 
+  
+
   dataSource = new MatTableDataSource<any>([]);
+
+  showProfileMenu = true;
+
+ toggleProfileMenu() {
+  console.log("clicked")
+  this.showProfileMenu = !this.showProfileMenu;
+}
 
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
