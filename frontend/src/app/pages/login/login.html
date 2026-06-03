@@ -22,18 +22,14 @@
 
         <mat-icon>mail</mat-icon>
 
-        <input
-          type="email"
-          [(ngModel)]="email"
-          (blur)="emailTouch = true"
-          placeholder="Enter your email">
+        <input type="email" [(ngModel)]="email" (blur)="emailTouch = true" placeholder="Enter your email">
 
       </div>
 
       @if(emailTouch && !email){
-        <p class="valid">
-          Email is required
-        </p>
+      <p class="valid">
+        Email is required
+      </p>
       }
 
     </div>
@@ -48,31 +44,24 @@
 
         <mat-icon>lock</mat-icon>
 
-        <input
-          type="password"
-          [(ngModel)]="password"
-          (blur)="passwordTouch = true"
-          placeholder="Enter your password">
+        <input type="password" [(ngModel)]="password" (blur)="passwordTouch = true" placeholder="Enter your password">
 
       </div>
 
       @if(passwordTouch && !password){
-        <p class="valid">
-          Password is required
-        </p>
+      <p class="valid">
+        Password is required
+      </p>
       }
 
-      @else if(password && password.length < 6){
-        <p class="valid">
-          Password must be at least 6 characters
+      @else if(password && password.length < 6){ <p class="valid">
+        Password must be at least 6 characters
         </p>
-      }
+        }
 
     </div>
 
-    <button
-      class="btn"
-      (click)="login()">
+    <button class="btn" (click)="login()">
 
       <mat-icon>login</mat-icon>
 
@@ -88,6 +77,11 @@
         Register
       </a>
 
+    </p>
+    <p>
+      <a routerLink="/forgotpassword">
+        Forgot Password?
+      </a>
     </p>
 
   </div>
