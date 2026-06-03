@@ -1,0 +1,109 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+.dashboard {
+  min-height: 100vh;
+  background: #f5f7fa;
+}
+
+/* Navbar */
+
+.navbar {
+  background: #3f51b5;
+  color: white;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 15px 30px;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.logout-btn {
+  background: white;
+  color: #3f51b5;
+
+  border: none;
+  padding: 10px 15px;
+
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Content */
+
+.content {
+  padding: 30px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 20px;
+}
+
+.add-btn {
+  background: #4caf50;
+  color: white;
+
+  border: none;
+  padding: 10px 15px;
+
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Search */
+
+.search-box {
+  margin-bottom: 20px;
+}
+
+.search-box input {
+  width: 300px;
+
+  padding: 10px;
+
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+/* Table */
+
+table {
+  width: 100%;
+  background: white;
+}
+
+.edit-btn {
+  background: orange;
+  color: white;
+
+  border: none;
+  padding: 6px 10px;
+  margin-right: 5px;
+
+  border-radius: 5px;
+}
+
+.delete-btn {
+  background: red;
+  color: white;
+
+  border: none;
+  padding: 6px 10px;
+
+  border-radius: 5px;
+}
+
+mat-paginator {
+  margin-top: 10px;
+}

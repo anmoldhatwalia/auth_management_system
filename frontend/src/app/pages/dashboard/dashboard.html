@@ -1,0 +1,65 @@
+<div class="dashboard">
+
+  <nav class="navbar">
+    <div class="logo">
+      User Management System
+    </div>
+
+    <button class="logout-btn" (click)="logout()">
+      Logout
+    </button>
+  </nav>
+
+  <div class="content">
+
+    <h2>User Dashboard</h2>
+
+    <div class="search-box">
+      <input
+        type="text"
+        placeholder="Search user..."
+        (keyup)="applyFilter($event)">
+    </div>
+
+    <table
+      mat-table
+      [dataSource]="dataSource"
+      matSort
+      class="mat-elevation-z8">
+
+      <!-- Name -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Name
+        </th>
+
+        <td mat-cell *matCellDef="let user">
+          {{ user.name }}
+        </td>
+      </ng-container>
+
+      <!-- Email -->
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Email
+        </th>
+
+        <td mat-cell *matCellDef="let user">
+          {{ user.email }}
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+    </table>
+
+    <mat-paginator
+  [pageSize]="5"
+  [pageSizeOptions]="[5,10,20]"
+  showFirstLastButtons>
+</mat-paginator>
+  </div>
+
+</div>
