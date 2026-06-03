@@ -1,28 +1,13 @@
-import {
-  Component,
-  OnInit,
-  ViewChild,
-  inject,
-  AfterViewInit
-} from '@angular/core';
+import {Component,OnInit,ViewChild,inject,AfterViewInit} from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 
-import {
-  MatTableDataSource,
-  MatTableModule
-} from '@angular/material/table';
+import {MatTableDataSource,MatTableModule} from '@angular/material/table';
 
-import {
-  MatPaginator,
-  MatPaginatorModule
-} from '@angular/material/paginator';
+import {MatPaginator,MatPaginatorModule} from '@angular/material/paginator';
 
-import {
-  MatSort,
-  MatSortModule
-} from '@angular/material/sort';
+import {MatSort,MatSortModule} from '@angular/material/sort';
 
 import { MatInputModule } from '@angular/material/input';
 

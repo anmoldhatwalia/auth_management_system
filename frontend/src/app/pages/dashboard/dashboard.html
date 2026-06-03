@@ -15,17 +15,10 @@
     <h2>User Dashboard</h2>
 
     <div class="search-box">
-      <input
-        type="text"
-        placeholder="Search user..."
-        (keyup)="applyFilter($event)">
+      <input type="text" placeholder="Search user..." (keyup)="applyFilter($event)">
     </div>
 
-    <table
-      mat-table
-      [dataSource]="dataSource"
-      matSort
-      class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
 
       <!-- Name -->
       <ng-container matColumnDef="name">
@@ -55,11 +48,8 @@
 
     </table>
 
-    <mat-paginator
-  [pageSize]="5"
-  [pageSizeOptions]="[5,10,20]"
-  showFirstLastButtons>
-</mat-paginator>
+    <mat-paginator [pageSize]="5" [pageSizeOptions]="[5,10,20]" showFirstLastButtons>
+    </mat-paginator>
   </div>
 
 </div>
