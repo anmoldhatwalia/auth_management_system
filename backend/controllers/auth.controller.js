@@ -3,9 +3,7 @@ const bcrypt = require('bcryptjs');
 const User = require('../models/user.model');
 const sendEmail = require('../utils/sendEmail');
 
-/* =========================
-   REGISTER
-========================= */
+
 
 exports.register = async (req, res) => {
 
@@ -68,9 +66,7 @@ exports.register = async (req, res) => {
 };
 
 
-/* =========================
-   LOGIN
-========================= */
+
 
 exports.login = async (req, res) => {
 
@@ -150,9 +146,6 @@ exports.login = async (req, res) => {
 };
 
 
-/* =========================
-   GET USERS
-========================= */
 
 exports.getUsers = async (req, res) => {
 
@@ -179,9 +172,7 @@ exports.getUsers = async (req, res) => {
 };
 
 
-/* =========================
-   FORGOT PASSWORD
-========================= */
+
 
 exports.forgotPassword = async (req, res) => {
 
@@ -250,9 +241,7 @@ exports.forgotPassword = async (req, res) => {
 };
 
 
-/* =========================
-   RESET PASSWORD
-========================= */
+
 
 exports.resetPassword = async (req, res) => {
 
@@ -319,3 +308,42 @@ exports.resetPassword = async (req, res) => {
     }
 
 };
+
+
+exports.getAnalytics = async (req, res) => {
+
+    try {
+        const totalUsers = await User.countDocuments();
+
+        const activeUsers = await User.countDocuments({ isActive: true });
+
+        const inactiveUsers = totalUsers - activeUsers;
+
+        const monthlyUsers = await User.aggregate([
+            {
+                $group: {
+                    _id: {
+                        month: {
+                            $month: "$createdAt"
+                        }
+                    },
+                    count: {
+                        $sum: 1
+                    }
+                }
+            }
+        ]);
+
+        res.json({ totalUsers, activeUsers, inactiveUsers, monthlyUsers });
+
+    }
+
+    catch (err) {
+
+        res.status(500).json({
+            message: err.message
+        });
+
+    }
+
+};  

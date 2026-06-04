@@ -1,0 +1,65 @@
+<div class="dashboard">
+
+    <aside class="sidebar">
+
+        <div class="sidebar-header">
+            <h2>UMS</h2>
+        </div>
+
+        <ul class="nav-links">
+
+            <li>
+                <a routerLink="/dashboard" routerLinkActive="active">
+
+                    <mat-icon>dashboard</mat-icon>
+                    <span>Dashboard</span>
+
+                </a>
+            </li>
+
+            <li>
+                <a routerLink="/users" routerLinkActive="active">
+
+                    <mat-icon>group</mat-icon>
+                    <span>Users</span>
+
+                </a>
+            </li>
+
+            <li>
+                <a routerLink="/analytics" routerLinkActive="active">
+
+                    <mat-icon>analytics</mat-icon>
+                    <span>Analytics</span>
+
+                </a>
+            </li>
+
+            <li>
+                <a routerLink="/settings" routerLinkActive="active">
+
+                    <mat-icon>settings</mat-icon>
+                    <span>Settings</span>
+
+                </a>
+            </li>
+
+        </ul>
+
+        <button class="logout-btn" (click)="logout()">
+
+            <mat-icon>logout</mat-icon>
+
+            Logout
+
+        </button>
+
+    </aside>
+
+    <main class="main-content">
+
+        <router-outlet></router-outlet>
+
+    </main>
+
+</div>

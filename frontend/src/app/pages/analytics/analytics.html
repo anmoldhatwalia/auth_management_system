@@ -1,1 +1,45 @@
-<p>analytics works!</p>
+<div class="analytics-container">
+
+  <div class="page-header">
+
+    <h1>Analytics Dashboard</h1>
+
+    <p>
+      User statistics and insights
+    </p>
+
+  </div>
+
+  <div class="stats-grid">
+
+    <div class="stat-card">
+
+      <h4>Total Users</h4>
+
+      <h2>{{ totalUsers }}</h2>
+
+    </div>
+
+  </div>
+
+  <div class="charts-grid">
+
+    <div class="chart-card">
+
+      <h3>Monthly Registrations</h3>
+
+      <canvas id="barChart"></canvas>
+
+    </div>
+
+    <div class="chart-card">
+
+      <h3>User Distribution</h3>
+
+      <canvas id="pieChart"></canvas>
+
+    </div>
+
+  </div>
+
+</div>

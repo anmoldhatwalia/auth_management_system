@@ -29,6 +29,14 @@ export class Auth {
     );
   }
 
+ getAnalytics() {
+
+  return this.http.get<any>(
+    'http://localhost:3000/api/auth/analytics'
+  );
+
+}
+
   forgotPassword(data: any) {
 
     return this.http.post(

@@ -11,31 +11,8 @@ body{
 
 /* Layout */
 
-.dashboard{
-  display:flex;
-  min-height:100vh;
-}
 
-/* Sidebar */
-
-.sidebar{
-
-  position:fixed;
-
-  left:0;
-  top:0;
-
-  width:260px;
-  height:100vh;
-
-  background:#0f172a;
-
-  display:flex;
-  flex-direction:column;
-
-  padding:25px;
-}
-/* ================= HEADER ================= */
+/* Header */
 
 .header{
 
@@ -358,17 +335,6 @@ body{
   width:20px;
 
   height:20px;
-}
-
-/* Main Content */
-
-.main-content{
-
-  margin-left:260px;
-
-  width:calc(100% - 260px);
-
-  padding:30px;
 }
 
 /* Topbar */
